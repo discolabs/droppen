@@ -33,3 +33,16 @@ bower.json
 
 # Editors
 .idea
+
+# Shopify Theme
+.sass-cache
+node_modules
+bower_components
+/theme/dist
+/theme/.build/config.yml
+/theme/.build/assets
+/theme/.build/config
+/theme/.build/layout
+/theme/.build/locales
+/theme/.build/snippets
+/theme/.build/templates
