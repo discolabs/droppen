@@ -1,12 +1,11 @@
 {
-  "name": "your-theme-name",
+  "name": "droplet-them",
   "version": "0.0.1",
-  "homepage": "http://your-theme-homepage.com/",
-  "description": "A description of your theme.",
+  "homepage": "https://droplet-3.myshopify.com",
+  "description": "The frontend theme for Droplet.",
   "keywords": "Shopify",
-  "author": "Your Name <your.name@example.com>",
-  "main": "Gruntfile.js",
-  "license": "MIT",
+  "author": "Gavin Ballard <gavin@discolabs.com>",
+  "main": "Gruntfile.coffee",
   "engines": {
     "node": ">= 0.10.0"
   },

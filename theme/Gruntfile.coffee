@@ -14,7 +14,7 @@ module.exports = (grunt) ->
     # Meta information about theme.
     meta:
       banner:
-        '// Your Theme Name\n' +
+        '// Droplet\n' +
         '// version: <%= pkg.version %>\n' +
         '// author: <%= pkg.author %>\n' +
         '// license: <%= pkg.licenses[0].type %>\n'
@@ -37,7 +37,8 @@ module.exports = (grunt) ->
         sourceMap: not IS_PRODUCTION
       theme:
         files:
-          '.build/assets/script.js.liquid': ['theme/assets/js/script-*.js']
+          '.build/assets/jquery-2.1.4.js': ['theme/assets/js/jquery-2.1.4.js']
+          '.build/assets/app.js': ['theme/assets/js/jquery.getQueryParameters.js', 'theme/assets/js/app.js']
 
     # Optimisation of image assets.
     imagemin:

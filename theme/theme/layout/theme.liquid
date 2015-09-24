@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% include 'head-title' %}
-    {% include 'head-description' %}
-    {% include 'head-open-graph' %}
+    <title>{{ shop.name | escape }}</title>
+    <meta name="description" content="{{ shop.description }}" />
     {{ content_for_header }}
     {{ 'styles.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
     {{ content_for_layout }}
-    {{ 'script.js' | asset_url | script_tag }}
+    {{ 'jquery-2.1.4.js' | asset_url | script_tag }}
+    {{ 'app.js' | asset_url | script_tag }}
   </body>
 </html>

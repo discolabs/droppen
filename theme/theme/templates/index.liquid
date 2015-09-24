@@ -1,0 +1,33 @@
+<form id="form" method="POST">
+
+<input type="hidden" id="id" name="id" value="" />
+
+<label for="template">Template</label>
+<select id="template" name="template">
+    <option value="index">Index / Page</option>
+    <option value="product">Product</option>
+    <option value="collection">Collection</option>
+</select>
+
+<label for="product">Product</label>
+<select id="product" name="product">
+    {% for product in collections.all.products %}
+    <option value="{{ product.handle }}">{{ product.title }}</option>
+    {% endfor %}
+</select>
+
+<button type="submit">Preview</button>
+
+<label for="liquid">Liquid</label>
+<textarea id="liquid" name="liquid"></textarea>
+
+<label for="css">CSS</label>
+<textarea id="css" name="css"></textarea>
+
+<label for="js">Javascript</label>
+<textarea id="js" name="js"></textarea>
+
+<label for="preview">Preview</label>
+<iframe id="preview"></iframe>
+
+</form>
