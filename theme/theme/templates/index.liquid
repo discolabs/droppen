@@ -1,33 +1,52 @@
-<form id="form" method="POST">
+<form id="editor" method="POST">
 
-<input type="hidden" id="id" name="id" value="" />
+    <nav id="navbar">
+        <a href="/" class="brand">Droplet</a>
 
-<label for="template">Template</label>
-<select id="template" name="template">
-    <option value="index">Index / Page</option>
-    <option value="product">Product</option>
-    <option value="collection">Collection</option>
-</select>
+        <button type="submit">Run</button>
+        <button type="button">Save</button>
 
-<label for="product">Product</label>
-<select id="product" name="product">
-    {% for product in collections.all.products %}
-    <option value="{{ product.handle }}">{{ product.title }}</option>
-    {% endfor %}
-</select>
+        <input type="hidden" id="id" name="id" value="" />
+    </nav>
 
-<button type="submit">Preview</button>
+    <section id="content">
+        <aside id="sidebar">
+            <label for="template">Template</label>
+            <select id="template" name="template">
+                <option value="index">Index / Page</option>
+                <option value="product">Product</option>
+                <option value="collection">Collection</option>
+            </select>
 
-<label for="liquid">Liquid</label>
-<textarea id="liquid" name="liquid"></textarea>
+            <label for="product">Product</label>
+            <select id="product" name="product">
+                {% for product in collections.all.products %}
+                <option value="{{ product.handle }}">{{ product.title }}</option>
+                {% endfor %}
+            </select>
+        </aside>
 
-<label for="css">CSS</label>
-<textarea id="css" name="css"></textarea>
+        <section class="column">
+            <div class="panel">
+                <label for="liquid">Liquid</label>
+                <textarea id="liquid" name="liquid"></textarea>
+            </div>
+            <div class="panel">
+                <label for="js">Javascript</label>
+                <textarea id="js" name="js"></textarea>
+            </div>
+        </section>
 
-<label for="js">Javascript</label>
-<textarea id="js" name="js"></textarea>
-
-<label for="preview">Preview</label>
-<iframe id="preview"></iframe>
+        <section class="column">
+            <div class="panel">
+                <label for="css">CSS</label>
+                <textarea id="css" name="css"></textarea>
+            </div>
+            <div class="panel">
+                <label for="preview">Preview</label>
+                <iframe id="preview"></iframe>
+            </div>
+        </section>
+    </section>
 
 </form>

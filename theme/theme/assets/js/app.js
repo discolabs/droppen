@@ -1,6 +1,6 @@
 (function($) {
 
-    var $form = $('#form'),
+    var $editor = $('#editor'),
         $id = $('#id'),
         $liquid = $('#liquid'),
         $css = $('#css'),
@@ -24,10 +24,21 @@
         $id.val(Math.random().toString(36).substring(6));
     }
 
+    // On load, initialise CodeMirrors
+    var jsCodeMirror = CodeMirror.fromTextArea($js.get(0), {
+        mode: 'javascript'
+    });
+    var cssCodeMirror = CodeMirror.fromTextArea($css.get(0), {
+        mode: 'css'
+    });
+    var liquidCodeMirror = CodeMirror.fromTextArea($liquid.get(0), {
+        mode: 'html'
+    });
+
     // Intercept the submit event to AJAXify our request.
-    $form.submit(function(e) {
+    $editor.submit(function(e) {
         e.preventDefault();
-        $.post('/apps/droplet/droplets', $form.serialize(), function() {
+        $.post('/apps/droplet/droplets', $editor.serialize(), function() {
             alert('done!');
         });
     });

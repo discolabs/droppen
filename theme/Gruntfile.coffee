@@ -24,9 +24,12 @@ module.exports = (grunt) ->
       options:
           style: if IS_PRODUCTION then 'compressed' else 'expanded'
           sourcemap: not IS_PRODUCTION
+          loadPath: ['bower_components/bootstrap/scss']
       theme:
         files:
-          '.build/assets/styles.css.liquid': 'theme/assets/scss/styles.scss'
+          '.build/assets/normalize.css': 'bower_components/normalize.css/normalize.css'
+          '.build/assets/codemirror.css': 'bower_components/codemirror/lib/codemirror.css'
+          '.build/assets/styles.css': 'theme/assets/scss/styles.scss'
 
     # Concatenation and minification of Javascript.
     uglify:
@@ -37,8 +40,14 @@ module.exports = (grunt) ->
         sourceMap: not IS_PRODUCTION
       theme:
         files:
-          '.build/assets/jquery-2.1.4.js': ['theme/assets/js/jquery-2.1.4.js']
-          '.build/assets/app.js': ['theme/assets/js/jquery.getQueryParameters.js', 'theme/assets/js/app.js']
+          '.build/assets/app.js': [
+            'theme/assets/js/jquery-2.1.4.js',
+            'theme/assets/js/jquery.getQueryParameters.js',
+            'bower_components/codemirror/lib/codemirror.js',
+            'bower_components/codemirror/mode/javascript/javascript.js',
+            'bower_components/codemirror/mode/css/javascript.js',
+            'theme/assets/js/app.js'
+          ]
 
     # Optimisation of image assets.
     imagemin:
@@ -145,7 +154,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-imagemin'
-  grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'

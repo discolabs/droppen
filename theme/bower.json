@@ -1,0 +1,21 @@
+{
+  "name": "droplet-theme",
+  "version": "0.0.1",
+  "homepage": "https://droplet-3.myshopify.com",
+  "authors": [
+    "Gavin Ballard <gavin@gavinballard.com>"
+  ],
+  "description": "The frontend theme for Droplet.",
+  "main": "Gruntfile.coffee",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4-dev",
+    "normalize.css": "~3.0.3"
+  }
+}
