@@ -1,7 +1,7 @@
 (function($) {
 
     var $editor = $('#editor'),
-        $id = $('#id'),
+        $code = $('#code'),
         $liquid = $('#liquid'),
         $css = $('#css'),
         $js = $('#js'),
@@ -12,7 +12,7 @@
     // On load, populate the ID input correctly.
     if('droplet' in queryParameters) {
         var dropletID = queryParameters['droplet'];
-        $id.val(dropletID);
+        $code.val(dropletID);
         $.getJSON('/apps/droplet/droplets/' + dropletID, function(droplet) {
             $liquid.val(droplet.liquid);
             $css.val(droplet.css);
@@ -21,7 +21,7 @@
             $product.val(droplet.product);
         });
     } else {
-        $id.val(Math.random().toString(36).substring(6));
+        $code.val(Math.random().toString(36).substring(6));
     }
 
     // On load, initialise CodeMirrors
@@ -38,8 +38,17 @@
     // Intercept the submit event to AJAXify our request.
     $editor.submit(function(e) {
         e.preventDefault();
-        $.post('/apps/droplet/droplets', $editor.serialize(), function() {
-            alert('done!');
+        $.post('/apps/droplet/droplets', $editor.serialize(), function(e) {
+          if (e.template === "index") {
+            $("#preview").attr("src", window.location.href + "?view=" + e.code)
+          } else if (e.template === "collection") {
+            $("#preview").attr("src", window.location.href + "collection/all/?view=" + e.code)
+          } else if (e.template === "product") {
+            $("#preview").attr("src", window.location.href + "products/" + e.product + "?view=" + e.code)
+          } else {
+            alert("hmmm... what do to now?");
+          }
+
         });
     });
 
