@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  liquid: MyText
+  css: MyText
+  js: MyText
+  template: MyString
+  product: MyString
+
+two:
+  code: MyString
+  liquid: MyText
+  css: MyText
+  js: MyText
+  template: MyString
+  product: MyString

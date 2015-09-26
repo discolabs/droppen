@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924131243) do
+ActiveRecord::Schema.define(version: 20150926181811) do
+
+  create_table "droplets", force: :cascade do |t|
+    t.string   "code"
+    t.text     "liquid"
+    t.text     "css"
+    t.text     "js"
+    t.string   "template"
+    t.string   "product"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "droplets", ["code"], name: "index_droplets_on_code", unique: true
 
   create_table "shops", force: :cascade do |t|
     t.string   "shopify_domain",                         null: false

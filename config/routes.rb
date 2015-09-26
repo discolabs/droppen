@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :droplets
   mount DiscoApp::Engine, at: '/'
   root :to => 'home#index'
   mount ShopifyApp::Engine, at: '/'
