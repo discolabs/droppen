@@ -1,9 +1,9 @@
 GIT
   remote: https://disco-gems:f361b0fef05c465c85a3d2d297930719617cb583@github.com/discolabs/disco_app.git
-  revision: 778546010228a7a2e6241c8f89092ed4150d67dd
-  tag: 0.5.2
+  revision: 0165a514bc81f25c8c29806a0f8b26b7ded58b3c
+  tag: 0.5.4
   specs:
-    disco_app (0.5.2)
+    disco_app (0.5.4)
       bootstrap-sass (~> 3.3.5.1)
       pg (~> 0.18.2)
       puma (~> 2.11.3)
@@ -127,7 +127,7 @@ GEM
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.1)
-    minitest-reporters (1.0.19)
+    minitest-reporters (1.0.20)
       ansi
       builder
       minitest (>= 5.0)
@@ -138,7 +138,7 @@ GEM
     nenv (0.2.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    notiffany (0.0.7)
+    notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
     oauth2 (1.0.0)
@@ -156,7 +156,7 @@ GEM
     omniauth-shopify-oauth2 (1.1.10)
       omniauth-oauth2 (~> 1.2)
     pg (0.18.3)
-    pry (0.10.1)
+    pry (0.10.2)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
@@ -197,7 +197,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
-    rb-fsevent (0.9.5)
+    rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdoc (4.2.0)
@@ -231,8 +231,8 @@ GEM
       redis-namespace (~> 1.5, >= 1.5.2)
     slop (3.6.0)
     spring (1.4.0)
-    sprockets (3.3.4)
-      rack (~> 1.0)
+    sprockets (3.3.5)
+      rack (> 1, < 3)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -285,4 +285,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.3
+   1.10.6

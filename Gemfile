@@ -43,7 +43,7 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'disco_app', git: 'https://disco-gems:f361b0fef05c465c85a3d2d297930719617cb583@github.com/discolabs/disco_app.git', tag: '0.5.2'
+gem 'disco_app', git: 'https://disco-gems:f361b0fef05c465c85a3d2d297930719617cb583@github.com/discolabs/disco_app.git', tag: '0.5.4'
 
 gem 'shopify_app', '~> 6.1.0'
 gem 'sidekiq', '~> 3.4.2'
