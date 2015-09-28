@@ -1,8 +1,13 @@
 $navbar-bg-color: #37bebf;
 $navbar-bg-color-gradient: #3acab5;
+$sidebar-bg-color: #f0f0f0;
 
 @import "layout";
 @import "type";
 @import "navbar";
+
+// From Bootstrap
+@import "variables";
+@import "mixins";
 @import "forms";
 

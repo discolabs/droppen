@@ -18,14 +18,14 @@
     <section id="content">
         <aside id="sidebar" class="column-left">
             <label for="template">Template</label>
-            <select id="template" name="template">
+            <select id="template" name="template" class="form-control">
                 <option value="index">Index / Page</option>
                 <option value="product">Product</option>
                 <option value="collection">Collection</option>
             </select>
 
             <label for="product">Product</label>
-            <select id="product" name="product">
+            <select id="product" name="product" class="form-control">
                 {% for product in collections.all.products %}
                 <option value="{{ product.handle }}">{{ product.title }}</option>
                 {% endfor %}
