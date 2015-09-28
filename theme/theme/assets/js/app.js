@@ -26,13 +26,16 @@
 
     // On load, initialise CodeMirrors
     var jsCodeMirror = CodeMirror.fromTextArea($js.get(0), {
-        mode: 'javascript'
+        mode: 'javascript',
+        lineNumbers: true
     });
     var cssCodeMirror = CodeMirror.fromTextArea($css.get(0), {
-        mode: 'css'
+        mode: 'css',
+        lineNumbers: true
     });
     var liquidCodeMirror = CodeMirror.fromTextArea($liquid.get(0), {
-        mode: 'html'
+        mode: 'html',
+        lineNumbers: true
     });
 
     // Intercept the submit event to AJAXify our request.
