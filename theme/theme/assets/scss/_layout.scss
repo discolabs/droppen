@@ -47,7 +47,16 @@
         top: 10px;
         right: 10px;
         display: inline-block;
+        border: 1px solid #f0f0f0;
+        border-radius: 3px;
+        background-color: #fafafa;
+        font-size: 10px;
+        text-transform: uppercase;
+        padding: 2px 4px;
+        color: #999999;
         z-index: 10000000;
+        transition: opacity 0.2s ease-in-out;
+        opacity: 1.0;
       }
 
       & > textarea, iframe, .CodeMirror {
@@ -58,6 +67,10 @@
         bottom: 0;
         border: 0;
         width: 100%;
+      }
+
+      &:hover > label {
+        opacity: 0;
       }
     }
   }
