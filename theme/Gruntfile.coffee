@@ -45,7 +45,7 @@ module.exports = (grunt) ->
             'theme/assets/js/jquery.getQueryParameters.js',
             'bower_components/codemirror/lib/codemirror.js',
             'bower_components/codemirror/mode/javascript/javascript.js',
-            'bower_components/codemirror/mode/css/javascript.js',
+            'bower_components/codemirror/mode/css/css.js',
             'theme/assets/js/app.js'
           ]
 
