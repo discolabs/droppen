@@ -1,16 +1,22 @@
 <form id="editor" method="POST">
 
     <nav id="navbar">
-        <a href="/" class="brand">Droplet</a>
+        <a id="brand" href="/" class="column-left">
+            <img id="logo" src="{{ 'logo.svg' | asset_url }}" alt="DropPen" />
+        </a>
 
-        <button type="submit">Run</button>
-        <button type="button">Save</button>
+        <section id="toolbar" class="column-content">
+            <button type="submit">Run</button>
+            <button type="button">Share</button>
+            <input type="hidden" id="code" name="code" value="" />
+        </section>
 
-        <input type="hidden" id="code" name="code" value="" />
+        <aside id="promos" class="column-content">
+        </aside>
     </nav>
 
     <section id="content">
-        <aside id="sidebar">
+        <aside id="sidebar" class="column-left">
             <label for="template">Template</label>
             <select id="template" name="template">
                 <option value="index">Index / Page</option>
@@ -26,7 +32,7 @@
             </select>
         </aside>
 
-        <section class="column">
+        <section class="column-content">
             <div class="panel">
                 <label for="liquid">Liquid</label>
                 <textarea id="liquid" name="liquid"></textarea>
@@ -37,7 +43,7 @@
             </div>
         </section>
 
-        <section class="column">
+        <section class="column-content">
             <div class="panel">
                 <label for="css">CSS</label>
                 <textarea id="css" name="css"></textarea>

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 #editor {
   background-color: green;
 
@@ -11,9 +15,14 @@
   flex-direction: column;
 }
 
-#navbar {
-  background-color: red;
-  padding: 10px;
+.column-left {
+  flex: 1;
+  min-width: 200px;
+}
+
+.column-content {
+  flex: 5;
+  min-width: 300px;
 }
 
 #content {
@@ -25,16 +34,11 @@
 
   #sidebar {
     background-color: lime;
-    flex: 1;
-    min-width: 200px;
     padding: 10px;
   }
 
-  .column {
+  .column-content {
     background-color: yellow;
-    flex: 5;
-
-    min-width: 300px;
 
     display: flex;
     flex-direction: column;
