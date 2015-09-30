@@ -1,16 +1,16 @@
 GIT
   remote: https://disco-gems:f361b0fef05c465c85a3d2d297930719617cb583@github.com/discolabs/disco_app.git
-  revision: 0165a514bc81f25c8c29806a0f8b26b7ded58b3c
-  tag: 0.5.4
+  revision: b577fe988bef999b250559ddf882e82e29db8bf9
+  tag: 0.5.5
   specs:
-    disco_app (0.5.4)
+    disco_app (0.5.5)
       bootstrap-sass (~> 3.3.5.1)
       pg (~> 0.18.2)
       puma (~> 2.11.3)
       rails (~> 4.2.3)
       rails_12factor (~> 0.0.3)
       shopify_app (~> 6.1.2)
-      sidekiq (~> 3.4.2)
+      sidekiq (~> 3.5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -66,8 +66,47 @@ GEM
       sass (>= 3.3.0)
     builder (3.2.2)
     byebug (6.0.2)
-    celluloid (0.16.1)
-      timers (~> 4.0.0)
+    celluloid (0.17.1.2)
+      bundler
+      celluloid-essentials
+      celluloid-extras
+      celluloid-fsm
+      celluloid-pool
+      celluloid-supervision
+      dotenv
+      nenv
+      rspec-logsplit (>= 0.1.2)
+      timers (>= 4.1.1)
+    celluloid-essentials (0.20.2.1)
+      bundler
+      dotenv
+      nenv
+      rspec-logsplit (>= 0.1.2)
+      timers (>= 4.1.1)
+    celluloid-extras (0.20.1)
+      bundler
+      dotenv
+      nenv
+      rspec-logsplit (>= 0.1.2)
+      timers (>= 4.1.1)
+    celluloid-fsm (0.20.1)
+      bundler
+      dotenv
+      nenv
+      rspec-logsplit (>= 0.1.2)
+      timers (>= 4.1.1)
+    celluloid-pool (0.20.1)
+      bundler
+      dotenv
+      nenv
+      rspec-logsplit (>= 0.1.2)
+      timers (>= 4.1.1)
+    celluloid-supervision (0.20.1.1)
+      bundler
+      dotenv
+      nenv
+      rspec-logsplit (>= 0.1.2)
+      timers (>= 4.1.1)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -106,7 +145,7 @@ GEM
     hashie (3.4.2)
     hitimes (1.2.3)
     i18n (0.7.0)
-    jbuilder (2.3.1)
+    jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (4.0.5)
@@ -204,6 +243,7 @@ GEM
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    rspec-logsplit (0.1.3)
     ruby-progressbar (1.7.5)
     sass (3.4.18)
     sass-rails (5.0.4)
@@ -223,8 +263,8 @@ GEM
       omniauth-shopify-oauth2 (~> 1.1.10)
       rails (>= 3.1, < 5.0)
       shopify_api (~> 4.0.2)
-    sidekiq (3.4.2)
-      celluloid (~> 0.16.0)
+    sidekiq (3.5.0)
+      celluloid (~> 0.17.0)
       connection_pool (~> 2.2, >= 2.2.0)
       json (~> 1.0)
       redis (~> 3.2, >= 3.2.1)
@@ -241,7 +281,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
-    timers (4.0.4)
+    timers (4.1.1)
       hitimes
     turbolinks (2.5.3)
       coffee-rails
@@ -277,7 +317,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shopify_app (~> 6.1.0)
-  sidekiq (~> 3.4.2)
+  sidekiq (~> 3.5.0)
   spring
   sqlite3 (~> 1.3.10)
   turbolinks
