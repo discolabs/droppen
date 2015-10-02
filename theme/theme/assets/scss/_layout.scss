@@ -55,8 +55,6 @@
         padding: 2px 4px;
         color: #999999;
         z-index: 10000000;
-        transition: opacity 0.2s ease-in-out;
-        opacity: 1.0;
       }
 
       & > textarea, iframe, .CodeMirror {
@@ -67,10 +65,6 @@
         bottom: 0;
         border: 0;
         width: 100%;
-      }
-
-      &:hover > label {
-        opacity: 0.25;
       }
     }
   }
