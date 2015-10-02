@@ -23,7 +23,7 @@ class TemplateService
 
   def template_code
     %{
-      {% layout 'none' %} 
+      {% layout none %}
 
       {% comment %} 
       Start of CSS 
