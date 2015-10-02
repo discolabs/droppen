@@ -95,7 +95,7 @@ var DropPen = (function($) {
      * Load the current droplet via an Ajax GET request.
      */
     function loadDroplet() {
-        $.getJSON('/apps/droplet/droplets/' + dropletCode, function(droplet) {
+        $.getJSON('/apps/droppen/droplets/' + dropletCode, function(droplet) {
             $liquid.val(droplet.liquid);
             $css.val(droplet.css);
             $js.val(droplet.js);
@@ -109,7 +109,7 @@ var DropPen = (function($) {
      */
     function saveDroplet() {
         previewLoadingStarted();
-        $.post('/apps/droplet/droplets', $editor.serialize(), function(droplet) {
+        $.post('/apps/droppen/droplets', $editor.serialize(), function(droplet) {
             var previewUrlPath = {
                 'index': '',
                 'collection': 'collection/all/',
@@ -117,7 +117,7 @@ var DropPen = (function($) {
             };
 
             // Update the source of the preview iframe.
-            $preview.attr('src', window.location.href + previewUrlPath[droplet.template] + '?view=' + e.code);
+            $preview.attr('src', window.location.href + previewUrlPath[droplet.template] + '?view=' + droplet.code);
         });
     }
 
