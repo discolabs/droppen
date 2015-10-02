@@ -11,5 +11,8 @@
   <body>
     {{ content_for_layout }}
     {{ 'app.js' | asset_url | script_tag }}
+    <script type="text/javascript">
+      DropPen.init();
+    </script>
   </body>
 </html>

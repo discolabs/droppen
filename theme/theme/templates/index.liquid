@@ -17,19 +17,24 @@
 
     <section id="content">
         <aside id="sidebar" class="column-left">
-            <label for="template">Template</label>
-            <select id="template" name="template" class="form-control">
-                <option value="index">Index / Page</option>
-                <option value="product">Product</option>
-                <option value="collection">Collection</option>
-            </select>
 
-            <label for="product">Product</label>
-            <select id="product" name="product" class="form-control">
-                {% for product in collections.all.products %}
-                <option value="{{ product.handle }}">{{ product.title }}</option>
-                {% endfor %}
-            </select>
+            <section class="form-group">
+                <label for="template">Shopify Template</label>
+                <select id="template" name="template" class="form-control">
+                    <option value="index">Home Page</option>
+                    <option value="product">Product Page</option>
+                    <option value="collection">Collection Page</option>
+                </select>
+            </section>
+
+            <section id="product-form-group" class="form-group" style="display: none;">
+                <label for="product">Product</label>
+                <select id="product" name="product" class="form-control">
+                    {% for product in collections.all.products %}
+                    <option value="{{ product.handle }}">{{ product.title }}</option>
+                    {% endfor %}
+                </select>
+            </section>
         </aside>
 
         <section class="column-content">
