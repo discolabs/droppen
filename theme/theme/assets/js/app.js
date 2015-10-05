@@ -91,6 +91,7 @@ var DropPen = (function($) {
         $editor.on('submit', formSubmitted);
         $template.on('change', templateChanged);
         $preview.on('load', previewLoaded);
+        $(document).on('click', '[href="#liquid-help"]', toggleLiquidHelp);
     }
 
     /**
@@ -202,7 +203,10 @@ var DropPen = (function($) {
     /**
      * Open / close the Liquid help overlay.
      */
-    function toggleLiquidHelp() {
+    function toggleLiquidHelp(e) {
+        if(e) {
+            e.preventDefault();
+        }
         if($liquidHelp.hasClass('open')) {
             closeLiquidHelp();
         } else {

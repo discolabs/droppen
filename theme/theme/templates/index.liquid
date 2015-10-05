@@ -23,6 +23,7 @@
 
     <section id="content" class="content open">
         <aside id="sidebar" class="content-column-left sidebar">
+            <h4>DropPen Settings</h4>
 
             <section class="form-group">
                 <label for="template">Shopify Template</label>
@@ -40,6 +41,10 @@
                     <option value="{{ product.handle }}">{{ product.title }}</option>
                     {% endfor %}
                 </select>
+            </section>
+
+            <section class="form-group">
+                <a href="#liquid-help">Open Liquid Reference</a> (<code>⌘ + /</code>)
             </section>
         </aside>
 
@@ -68,9 +73,14 @@
 
     <section id="liquid-help" class="content">
         <aside class="sidebar content-column-left">
+            <h4>Liquid Reference</h4>
+
             <section class="form-group">
-                <label for="liquid-help-filter">Filter</label>
-                <input id="liquid-help-filter" type="search" class="search form-control" />
+                <input id="liquid-help-filter" type="search" class="search form-control" place="Search Liquid Reference..." />
+            </section>
+
+            <section class="form-group">
+                <a href="#liquid-help">Close Liquid Reference</a> (<code>⌘ + /</code> or <code>esc</code>)
             </section>
         </aside>
 
