@@ -69,17 +69,24 @@ var DropPen = (function($) {
      * Initialise CodeMirror on <textarea> elements.
      */
     function setupCodeMirrors() {
+        var extraKeys = {
+          'Ctrl-/': toggleLiquidHelp,
+          'Cmd-/': toggleLiquidHelp
+        };
         jsCodeMirror = CodeMirror.fromTextArea($js.get(0), {
             mode: 'javascript',
-            lineNumbers: true
+            lineNumbers: true,
+            extraKeys: extraKeys
         });
         cssCodeMirror = CodeMirror.fromTextArea($css.get(0), {
             mode: 'css',
-            lineNumbers: true
+            lineNumbers: true,
+            extraKeys: extraKeys
         });
         liquidCodeMirror = CodeMirror.fromTextArea($liquid.get(0), {
             mode: 'html',
-            lineNumbers: true
+            lineNumbers: true,
+            extraKeys: extraKeys
         });
     }
 
@@ -204,7 +211,7 @@ var DropPen = (function($) {
      * Open / close the Liquid help overlay.
      */
     function toggleLiquidHelp(e) {
-        if(e) {
+        if(e.preventDefault) {
             e.preventDefault();
         }
         if($liquidHelp.hasClass('open')) {
