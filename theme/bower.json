@@ -17,6 +17,8 @@
   "dependencies": {
     "bootstrap": "v4-dev",
     "normalize.css": "~3.0.3",
-    "codemirror": "*"
+    "keymaster": "~1.6.3",
+    "codemirror": "~5.7.0",
+    "list.js": "~1.1.1"
   }
 }

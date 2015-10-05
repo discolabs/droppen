@@ -1,11 +1,11 @@
 <form id="editor" method="POST">
 
     <nav id="navbar">
-        <a id="brand" href="/" class="column-left">
+        <a id="brand" href="/" class="content-column-left">
             <img id="logo" src="{{ 'logo.svg' | asset_url }}" alt="DropPen" />
         </a>
 
-        <section id="toolbar" class="column-content">
+        <section id="toolbar" class="content-column">
             <button type="submit">Run &raquo;</button>
 
             <div id="loader">
@@ -17,12 +17,12 @@
             </div>
         </section>
 
-        <section id="promo" class="column-content">
+        <section id="promo" class="content-column">
         </section>
     </nav>
 
-    <section id="content">
-        <aside id="sidebar" class="column-left">
+    <section id="content" class="content open">
+        <aside id="sidebar" class="content-column-left sidebar">
 
             <section class="form-group">
                 <label for="template">Shopify Template</label>
@@ -43,7 +43,7 @@
             </section>
         </aside>
 
-        <section class="column-content">
+        <section class="content-column">
             <div class="panel">
                 <label for="liquid">Liquid</label>
                 <textarea id="liquid" name="liquid"></textarea>
@@ -54,7 +54,7 @@
             </div>
         </section>
 
-        <section class="column-content">
+        <section class="content-column">
             <div class="panel">
                 <label for="css">CSS</label>
                 <textarea id="css" name="css"></textarea>
@@ -63,6 +63,19 @@
                 <label for="preview">Preview</label>
                 <iframe id="preview"></iframe>
             </div>
+        </section>
+    </section>
+
+    <section id="liquid-help" class="content">
+        <aside class="sidebar content-column-left">
+            <section class="form-group">
+                <label for="liquid-help-filter">Filter</label>
+                <input id="liquid-help-filter" type="search" class="search form-control" />
+            </section>
+        </aside>
+
+        <section class="content-column-double">
+            <ul class="list"></ul>
         </section>
     </section>
 
