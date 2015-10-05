@@ -149,12 +149,18 @@ var DropPen = (function($) {
         }
     }
 
+    /**
+     * Event handler for when the preview panel begins loading.
+     */
     function previewLoadingStarted() {
-        console.log('Preview loading...');
+        $editor.addClass('loading');
     }
 
+    /**
+     * Event handler for when the preview panel completes loading.
+     */
     function previewLoaded() {
-        console.log('Preview loaded.');
+        $editor.removeClass('loading');
     }
 
     // Export public methods and the module.
