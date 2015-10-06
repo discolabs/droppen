@@ -8,7 +8,7 @@ var DropPen = (function($) {
     var DropPen = {},
         $editor, $content, $code, $liquid, $css, $js, $preview, $template, $product, $productFormGroup, $liquidHelp, $liquidHelpFilter,
         jsCodeMirror, cssCodeMirror, liquidCodeMirror,
-        dropletCode, queryParameters;
+        dropletCode, queryParameters, liquidKeywords;
 
     /***************************
      * Initialisation and setup.
@@ -17,7 +17,8 @@ var DropPen = (function($) {
     /**
      * Initialise DropPen.
      */
-    function init() {
+    function init(initialLiquidKeywords) {
+        liquidKeywords = initialLiquidKeywords;
         setupElementReferences();
         setupDropletCode();
         setupCodeMirrors();
@@ -122,13 +123,7 @@ var DropPen = (function($) {
             item: '<li><span class="keyword"></span> <span class="description"></span></li>'
         };
 
-        var values = [
-            { keyword: 'if', description: 'Executes a block of code only if a certain condition is met.' },
-            { keyword: 'elsif / else', description: 'Adds more conditions within an <code>if</code> or <code>unless</code> block.' },
-            { keyword: 'case / when', description: 'Creates a switch statement to compare a variable with different values. <code>case</code> initializes the switch statement, and <code>when</code> compares its values.'}
-        ];
-
-        var liquidHelpList = new List('liquid-help', options, values);
+        var liquidHelpList = new List('liquid-help', options, liquidKeywords);
     }
 
     /******************
