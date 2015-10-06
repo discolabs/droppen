@@ -120,10 +120,11 @@ var DropPen = (function($) {
      */
     function setupList() {
         var options = {
-            item: '<li><span class="keyword"></span> <span class="description"></span></li>'
+            item: '<li><span class="keyword"></span><span class="description"></span></li>'
         };
 
-        var liquidHelpList = new List('liquid-help', options, liquidKeywords);
+        // Initialise the List.
+        new List('liquid-help', options, liquidKeywords);
     }
 
     /******************
