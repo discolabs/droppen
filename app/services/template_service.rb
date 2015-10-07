@@ -1,9 +1,9 @@
 class TemplateService
 
-  attr_reader :droplet
+  attr_reader :droppen
 
-  def initialize(droplet)
-    @droplet = droplet
+  def initialize(droppen)
+    @droppen = droppen
   end
 
   def push
@@ -18,7 +18,7 @@ class TemplateService
   private
 
   def template_name
-    "templates/#{@droplet.template}.#{@droplet.code}.liquid"
+    "templates/#{@droppen.template}.#{@droppen.code}.liquid"
   end
 
   def template_code
@@ -29,7 +29,7 @@ class TemplateService
       Start of CSS 
       {% endcomment %}
       <style>
-      #{@droplet.css}
+      #{@droppen.css}
       </style>
       {% comment %} 
       End of CSS 
@@ -38,7 +38,7 @@ class TemplateService
       {% comment %} 
       Start of Liquid 
       {% endcomment %}
-      #{@droplet.liquid}
+      #{@droppen.liquid}
       {% comment %} 
       End of Liquid 
       {% endcomment %}
@@ -47,7 +47,7 @@ class TemplateService
       Start of Javascript 
       {% endcomment %}
       <script type="text/javascript">
-      #{@droplet.js}
+      #{@droppen.js}
       </script>
       {% comment %} 
       End of Javascript 

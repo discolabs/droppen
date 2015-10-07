@@ -1,0 +1,17 @@
+<%= form_for(@droppen) do |f| %>
+  <% if @droppen.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@droppen.errors.count, "error") %> prohibited this droppen from being saved:</h2>
+
+      <ul>
+      <% @droppen.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
