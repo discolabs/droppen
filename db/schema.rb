@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151007194810) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "droppens", force: :cascade do |t|
     t.string   "code"
     t.text     "liquid"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20151007194810) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "droppens", ["code"], name: "index_droppens_on_code", unique: true
+  add_index "droppens", ["code"], name: "index_droppens_on_code", unique: true, using: :btree
 
   create_table "shops", force: :cascade do |t|
     t.string   "shopify_domain",                         null: false
@@ -53,6 +56,6 @@ ActiveRecord::Schema.define(version: 20151007194810) do
     t.boolean  "has_storefront"
   end
 
-  add_index "shops", ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
+  add_index "shops", ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true, using: :btree
 
 end
