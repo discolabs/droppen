@@ -41,6 +41,7 @@
     background-color: $sidebar-bg-color;
     border-right: 1px solid darken($sidebar-bg-color, 10%);
     padding: 10px;
+    position: relative;
   }
 
   .content-column {
@@ -76,5 +77,19 @@
         width: 100%;
       }
     }
+  }
+}
+
+#credits {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  font-size: 11px;
+
+  color: #999;
+  a, a:visited, a:hover {
+    color: #999;
   }
 }

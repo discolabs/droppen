@@ -1,0 +1,21 @@
+{% capture random_binary_integer %}{{ 'now' | date: '%S' | modulo: 2 }}{% endcapture %}
+{% capture ordered_links %}
+{% if random_binary_integer == '0' %}
+    <a href="https://www.discolabs.com">Disco</a> and <a href="http://moonlitelabs.com/">Moonlite Labs</a>
+{% else %}
+    <a href="http://moonlitelabs.com/">Moonlite Labs</a> and <a href="https://www.discolabs.com">Disco</a>
+{% endif %}
+{% endcapture %}
+{% capture random_tertiary_integer %}{{ 'now' | date: '%S' | modulo: 4 }}{% endcapture %}
+{% capture random_joke %}
+{% if random_tertiary_integer == '0' %}
+&nbsp;in front of a live studio audience.
+{% elsif random_tertiary_integer == '1' %}
+&nbsp;and may contain traces of nuts.
+{% elsif random_tertiary_integer == '2' %}
+. If pain persists, see your doctor.
+{% else %}
+&nbsp;med kärlek från Sverige
+{% endif %}
+{% endcapture %}
+<section id="credits">DropPen built by {{ ordered_links | strip }}{{ random_joke | strip }}</section>
