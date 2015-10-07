@@ -85,7 +85,7 @@ var DropPen = (function($) {
             extraKeys: extraKeys
         });
         liquidCodeMirror = CodeMirror.fromTextArea($liquid.get(0), {
-            mode: 'html',
+            mode: 'htmlmixed',
             lineNumbers: true,
             extraKeys: extraKeys
         });

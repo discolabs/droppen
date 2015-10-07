@@ -46,6 +46,8 @@ module.exports = (grunt) ->
             'bower_components/codemirror/lib/codemirror.js',
             'bower_components/codemirror/mode/javascript/javascript.js',
             'bower_components/codemirror/mode/css/css.js',
+            'bower_components/codemirror/mode/xml/xml.js',
+            'bower_components/codemirror/mode/htmlmixed/htmlmixed.js',
             'bower_components/keymaster/keymaster.js',
             'bower_components/list.js/dist/list.js',
             'theme/assets/js/app.js'
