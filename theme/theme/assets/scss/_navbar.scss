@@ -2,27 +2,29 @@
   background: $navbar-bg-color;
   background: linear-gradient(135deg, $navbar-bg-color 0%, $navbar-bg-color-gradient 100%);
   display: flex;
-}
 
-#brand {
-  display: block;
-  padding: 10px;
+  #brand {
+    display: inline-block;
+    padding: 10px;
+    line-height: 0;
+  }
 
   #logo {
-    width: 120px;
     display: inline-block;
+    width: 120px;
+    height: 32px;
   }
-}
 
-#toolbar {
-  padding: 10px 0;
+  #toolbar {
+    padding: 10px 0;
+  }
 
   button {
     display: inline-block;
     background: transparent;
     color: white;
     border: 2px solid white;
-    line-height: 28px;
+    line-height: 22px;
     border-radius: 5px;
 
     &:hover, &:active {
@@ -30,8 +32,4 @@
       color: $navbar-bg-color;
     }
   }
-}
-
-#promos {
-  padding: 10px;
 }

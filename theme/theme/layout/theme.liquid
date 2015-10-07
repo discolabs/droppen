@@ -12,7 +12,7 @@
     {{ content_for_layout }}
     {{ 'app.js' | asset_url | script_tag }}
     <script type="text/javascript">
-      DropPen.init();
+      DropPen.init({% include 'liquidKeywords' %});
     </script>
   </body>
 </html>

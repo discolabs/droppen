@@ -6,9 +6,9 @@ var DropPen = (function($) {
 
     // Declare variables local to the DropPen module.
     var DropPen = {},
-        $editor, $code, $liquid, $css, $js, $preview, $template, $product, $productFormGroup,
+        $editor, $content, $code, $liquid, $css, $js, $preview, $template, $product, $productFormGroup, $liquidHelp, $liquidHelpFilter,
         jsCodeMirror, cssCodeMirror, liquidCodeMirror,
-        dropletCode, queryParameters;
+        dropletCode, queryParameters, liquidKeywords;
 
     /***************************
      * Initialisation and setup.
@@ -17,11 +17,14 @@ var DropPen = (function($) {
     /**
      * Initialise DropPen.
      */
-    function init() {
+    function init(initialLiquidKeywords) {
+        liquidKeywords = initialLiquidKeywords;
         setupElementReferences();
         setupDropletCode();
         setupCodeMirrors();
         setupEventHandlers();
+        setupKeymaster();
+        setupList();
     }
 
     /**
@@ -30,6 +33,7 @@ var DropPen = (function($) {
     function setupElementReferences() {
         $editor = $('#editor');
         $code = $('#code');
+        $content = $('#content');
         $liquid = $('#liquid');
         $css = $('#css');
         $js = $('#js');
@@ -37,6 +41,8 @@ var DropPen = (function($) {
         $template = $('#template');
         $product = $('#product');
         $productFormGroup = $('#product-form-group');
+        $liquidHelp = $('#liquid-help');
+        $liquidHelpFilter = $('#liquid-help-filter');
     }
 
     /**
@@ -64,17 +70,24 @@ var DropPen = (function($) {
      * Initialise CodeMirror on <textarea> elements.
      */
     function setupCodeMirrors() {
+        var extraKeys = {
+          'Ctrl-/': toggleLiquidHelp,
+          'Cmd-/': toggleLiquidHelp
+        };
         jsCodeMirror = CodeMirror.fromTextArea($js.get(0), {
             mode: 'javascript',
-            lineNumbers: true
+            lineNumbers: true,
+            extraKeys: extraKeys
         });
         cssCodeMirror = CodeMirror.fromTextArea($css.get(0), {
             mode: 'css',
-            lineNumbers: true
+            lineNumbers: true,
+            extraKeys: extraKeys
         });
         liquidCodeMirror = CodeMirror.fromTextArea($liquid.get(0), {
             mode: 'html',
-            lineNumbers: true
+            lineNumbers: true,
+            extraKeys: extraKeys
         });
     }
 
@@ -82,9 +95,36 @@ var DropPen = (function($) {
      * Register event handlers.
      */
     function setupEventHandlers() {
+        // jQuery event handlers.
         $editor.on('submit', formSubmitted);
         $template.on('change', templateChanged);
         $preview.on('load', previewLoaded);
+        $(document).on('click', '[href="#liquid-help"]', toggleLiquidHelp);
+    }
+
+    /**
+     * Set up Keymaster shortcuts.
+     */
+    function setupKeymaster() {
+        key.filter = function(event) {
+            var tagName = (event.target || event.srcElement).tagName;
+            return !(tagName == 'SELECT' || tagName == 'TEXTAREA');
+        };
+
+        key('⌘+/, ctrl+/', toggleLiquidHelp);
+        key('esc', closeLiquidHelp);
+    }
+
+    /**
+     * Set up list filtering.
+     */
+    function setupList() {
+        var options = {
+            item: '<li><span class="keyword"></span><span class="description"></span></li>'
+        };
+
+        // Initialise the List.
+        new List('liquid-help', options, liquidKeywords);
     }
 
     /******************
@@ -149,12 +189,50 @@ var DropPen = (function($) {
         }
     }
 
+    /**
+     * Event handler for when the preview panel begins loading.
+     */
     function previewLoadingStarted() {
-        console.log('Preview loading...');
+        $editor.addClass('loading');
     }
 
+    /**
+     * Event handler for when the preview panel completes loading.
+     */
     function previewLoaded() {
-        console.log('Preview loaded.');
+        $editor.removeClass('loading');
+    }
+
+    /**
+     * Open / close the Liquid help overlay.
+     */
+    function toggleLiquidHelp(e) {
+        if(e.preventDefault) {
+            e.preventDefault();
+        }
+        if($liquidHelp.hasClass('open')) {
+            closeLiquidHelp();
+        } else {
+            openLiquidHelp();
+        }
+    }
+
+    /**
+     * Open the Liquid help overlay.
+     */
+    function openLiquidHelp() {
+        $liquidHelp.addClass('open');
+        $content.removeClass('open');
+        $liquidHelpFilter.focus();
+    }
+
+    /**
+     * Close the Liquid help overlay.
+     */
+    function closeLiquidHelp() {
+        $liquidHelp.removeClass('open');
+        $content.addClass('open');
+        $liquidHelpFilter.val('');
     }
 
     // Export public methods and the module.

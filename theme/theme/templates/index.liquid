@@ -1,22 +1,29 @@
 <form id="editor" method="POST">
 
     <nav id="navbar">
-        <a id="brand" href="/" class="column-left">
+        <a id="brand" href="/" class="content-column-left">
             <img id="logo" src="{{ 'logo.svg' | asset_url }}" alt="DropPen" />
         </a>
 
-        <section id="toolbar" class="column-content">
-            <button type="submit">Run</button>
-            <button type="button">Share</button>
-            <input type="hidden" id="code" name="code" value="" />
+        <section id="toolbar" class="content-column">
+            <button type="submit">Run &raquo;</button>
+
+            <div id="loader">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
         </section>
 
-        <aside id="promos" class="column-content">
-        </aside>
+        <section id="promo" class="content-column">
+        </section>
     </nav>
 
-    <section id="content">
-        <aside id="sidebar" class="column-left">
+    <section id="content" class="content open">
+        <aside id="sidebar" class="content-column-left sidebar">
+            <h4>Settings</h4>
 
             <section class="form-group">
                 <label for="template">Shopify Template</label>
@@ -35,9 +42,22 @@
                     {% endfor %}
                 </select>
             </section>
+
+            <hr />
+
+            <h4>Liquid Reference</h4>
+            <section class="form-group">
+                <p>
+                    <a href="#liquid-help">Open Liquid Reference</a>
+                </p>
+                <small class="help-block">Shortcut: <kbd>⌘ + /</kbd></small>
+            </section>
+
+            <hr />
+
         </aside>
 
-        <section class="column-content">
+        <section class="content-column">
             <div class="panel">
                 <label for="liquid">Liquid</label>
                 <textarea id="liquid" name="liquid"></textarea>
@@ -48,7 +68,7 @@
             </div>
         </section>
 
-        <section class="column-content">
+        <section class="content-column">
             <div class="panel">
                 <label for="css">CSS</label>
                 <textarea id="css" name="css"></textarea>
@@ -57,6 +77,30 @@
                 <label for="preview">Preview</label>
                 <iframe id="preview"></iframe>
             </div>
+        </section>
+    </section>
+
+    <section id="liquid-help" class="content">
+        <aside class="sidebar content-column-left">
+            <h4>Liquid Reference</h4>
+
+            <section class="form-group">
+                <input id="liquid-help-filter" type="search" class="search form-control" place="Search Liquid Reference..." />
+            </section>
+
+            <section class="form-group">
+                <p>
+                    <a href="#liquid-help">Close Liquid Reference</a>
+                </p>
+                <small class="help-block">Shortcut: <kbd>⌘ + /</kbd> or <kbd>esc</kbd></small>
+            </section>
+
+            <hr />
+
+        </aside>
+
+        <section class="content-column-double">
+            <ul class="list"></ul>
         </section>
     </section>
 

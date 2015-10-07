@@ -1,0 +1,38 @@
+#liquid-help {
+
+  .list {
+
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    margin: 0;
+    list-style: none;
+
+    > li {
+
+      flex: 1 0 25%;
+      box-sizing: border-box;
+      margin: 10px;
+
+      border: 1px solid $code-bg;
+      border-radius: 2px;
+
+      > .keyword {
+        display: block;
+        font-family: $font-family-monospace;
+        font-size: 16px;
+        color: $code-color;
+        background-color: $code-bg;
+        padding: 10px;
+      }
+
+      > .description {
+        font-size: 14px;
+        display: block;
+        padding: 10px;
+      }
+    }
+  }
+
+}
+
