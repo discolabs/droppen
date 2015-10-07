@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 
+gem 'pg', '~> 0.18.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -50,7 +51,6 @@ gem 'sidekiq', '~> 3.5.0'
 gem 'puma', '~> 2.11.3'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 group :development, :test do
-  gem 'sqlite3', '~> 1.3.10'
   gem 'dotenv-rails', '~> 2.0.2'
   gem 'minitest-reporters', '~> 1.0.19'
   gem 'guard', '~> 2.13.0'
@@ -58,6 +58,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg', '~> 0.18.2'
   gem 'rails_12factor', '~> 0.0.3'
 end
