@@ -1,4 +1,3 @@
 json.array!(@droppens) do |droppen|
-  json.extract! droppen, :id
-  json.url droppen_url(droppen, format: :json)
+  json.url droppen_url(droppen.code, format: :json)
 end
