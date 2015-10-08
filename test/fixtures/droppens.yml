@@ -9,7 +9,7 @@ one:
   product: MyString
 
 two:
-  code: MyString
+  code: AnotherString
   liquid: MyText
   css: MyText
   js: MyText

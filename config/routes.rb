@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :droppens
-  resources :droplets, controller: 'droppens'
+
+  resources :droppens, only: [:create, :show], defaults: {format: 'json'} 
+  resources :droplets, controller: 'droppens', only: [:create, :show], defaults: {format: 'json'} 
   mount DiscoApp::Engine, at: '/'
   root :to => 'home#index'
   mount ShopifyApp::Engine, at: '/'
