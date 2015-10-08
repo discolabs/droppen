@@ -1,8 +1,8 @@
 {
-  "name": "droplet-theme",
+  "name": "droppen-theme",
   "version": "0.0.1",
-  "homepage": "https://droplet-3.myshopify.com",
-  "description": "The frontend theme for Droplet.",
+  "homepage": "https://droppen.org",
+  "description": "The frontend theme for DropPen.",
   "keywords": "Shopify",
   "author": "Gavin Ballard <gavin@discolabs.com>",
   "main": "Gruntfile.coffee",

@@ -8,7 +8,7 @@ var DropPen = (function($) {
     var DropPen = {},
         $editor, $content, $code, $liquid, $css, $js, $preview, $template, $product, $productFormGroup, $liquidHelp, $liquidHelpFilter,
         jsCodeMirror, cssCodeMirror, liquidCodeMirror,
-        dropletCode, queryParameters, liquidKeywords;
+        dropPenCode, queryParameters, liquidKeywords;
 
     /***************************
      * Initialisation and setup.
@@ -20,7 +20,7 @@ var DropPen = (function($) {
     function init(initialLiquidKeywords) {
         liquidKeywords = initialLiquidKeywords;
         setupElementReferences();
-        setupDropletCode();
+        setupDropPenCode();
         setupCodeMirrors();
         setupEventHandlers();
         setupKeymaster();
@@ -46,26 +46,26 @@ var DropPen = (function($) {
     }
 
     /**
-     * Ensure we have a Droplet code for this "session", based on the query
-     * parameters. If no Droplet code is available, create a random one.
+     * Ensure we have a DropPen code for this "session", based on the query
+     * parameters. If no DropPen code is available, create a random one.
      */
-    function setupDropletCode() {
+    function setupDropPenCode() {
         queryParameters = $.getQueryParameters();
 
-        // Try to fetch the droplet code from the query parameters.
+        // Try to fetch the DropPen code from the query parameters.
         // If it exists in the query parameters, attempt to load it.
-        if('droplet' in queryParameters) {
-            dropletCode = queryParameters['droplet'];
-            loadDroplet();
+        if('droppen' in queryParameters) {
+            dropPenCode = queryParameters['droppen'];
+            loadDropPen();
         }
 
-        // If we still don't have a valid droplet code, generate a random one.
-        if(!dropletCode) {
-            dropletCode = Math.random().toString(36).substring(6);
+        // If we still don't have a valid DropPen code, generate a random one.
+        if(!dropPenCode) {
+            dropPenCode = Math.random().toString(36).substring(6);
         }
 
-        // Store the Droplet code in the form element.
-        $code.val(dropletCode);
+        // Store the DropPen code in the form element.
+        $code.val(dropPenCode);
     }
 
     /**
@@ -134,18 +134,18 @@ var DropPen = (function($) {
      ******************/
 
     /**
-     * Load the current droplet via an Ajax GET request.
+     * Load the current DropPen via an Ajax GET request.
      */
-    function loadDroplet() {
+    function loadDropPen() {
         loadingStarted();
-        $.getJSON('/apps/droppen/droplets/' + dropletCode)
-            .done(function(droplet) {
-                $liquid.val(droplet.liquid);
-                $css.val(droplet.css);
-                $js.val(droplet.js);
-                $template.val(droplet.template);
-                $product.val(droplet.product);
-                previewDroplet(droplet);
+        $.getJSON('/apps/droppen/droppens/' + dropPenCode)
+            .done(function(droppen) {
+                $liquid.val(droppen.liquid);
+                $css.val(droppen.css);
+                $js.val(droppen.js);
+                $template.val(droppen.template);
+                $product.val(droppen.product);
+                previewDropPen(droppen);
             })
             .fail(function() {
                 loadingComplete();
@@ -154,13 +154,13 @@ var DropPen = (function($) {
     }
 
     /**
-     * Save the current Droplet via an Ajax POST request.
+     * Save the current DropPen via an Ajax POST request.
      */
-    function saveDroplet() {
+    function saveDropPen() {
         loadingStarted();
-        $.post('/apps/droppen/droplets', $editor.serialize())
-            .done(function(droplet) {
-                previewDroplet(droplet);
+        $.post('/apps/droppen/droppens', $editor.serialize())
+            .done(function(droppen) {
+                previewDropPen(droppen);
             })
             .fail(function() {
                 loadingComplete();
@@ -169,17 +169,17 @@ var DropPen = (function($) {
     }
 
     /**
-     * Load the droplet preview based on the current editor state.
+     * Load the DropPen preview based on the current editor state.
      */
-    function previewDroplet(droplet) {
+    function previewDropPen(droppen) {
         var previewUrlPath = {
             'index': '',
             'collection': 'collection/all/',
-            'product': 'products/' + droplet.product
+            'product': 'products/' + droppen.product
         };
 
         // Update the source of the preview iframe.
-        $preview.attr('src', window.location.href + previewUrlPath[droplet.template] + '?view=' + droplet.code);
+        $preview.attr('src', window.location.href + previewUrlPath[droppen.template] + '?view=' + droppen.code);
     }
 
     /*****************
@@ -194,7 +194,7 @@ var DropPen = (function($) {
      */
     function formSubmitted(e) {
         e.preventDefault();
-        saveDroplet();
+        saveDropPen();
     }
 
     /**

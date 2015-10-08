@@ -14,7 +14,7 @@ module.exports = (grunt) ->
     # Meta information about theme.
     meta:
       banner:
-        '// Droplet\n' +
+        '// DropPen\n' +
         '// version: <%= pkg.version %>\n' +
         '// author: <%= pkg.author %>\n' +
         '// license: <%= pkg.licenses[0].type %>\n'
