@@ -53,8 +53,10 @@ var DropPen = (function($) {
         queryParameters = $.getQueryParameters();
 
         // Try to fetch the droplet code from the query parameters.
+        // If it exists in the query parameters, attempt to load it.
         if('droplet' in queryParameters) {
             dropletCode = queryParameters['droplet'];
+            loadDroplet();
         }
 
         // If we still don't have a valid droplet code, generate a random one.
@@ -98,7 +100,7 @@ var DropPen = (function($) {
         // jQuery event handlers.
         $editor.on('submit', formSubmitted);
         $template.on('change', templateChanged);
-        $preview.on('load', previewLoaded);
+        $preview.on('load', loadingComplete);
         $(document).on('click', '[href="#liquid-help"]', toggleLiquidHelp);
     }
 
@@ -135,30 +137,49 @@ var DropPen = (function($) {
      * Load the current droplet via an Ajax GET request.
      */
     function loadDroplet() {
-        $.getJSON('/apps/droppen/droplets/' + dropletCode, function(droplet) {
-            $liquid.val(droplet.liquid);
-            $css.val(droplet.css);
-            $js.val(droplet.js);
-            $template.val(droplet.template);
-            $product.val(droplet.product);
-        });
+        loadingStarted();
+        $.getJSON('/apps/droppen/droplets/' + dropletCode)
+            .done(function(droplet) {
+                $liquid.val(droplet.liquid);
+                $css.val(droplet.css);
+                $js.val(droplet.js);
+                $template.val(droplet.template);
+                $product.val(droplet.product);
+                previewDroplet(droplet);
+            })
+            .fail(function() {
+                loadingComplete();
+                alert('Sorry! An error occurred loading this DropPen.');
+            });
     }
 
     /**
      * Save the current Droplet via an Ajax POST request.
      */
     function saveDroplet() {
-        previewLoadingStarted();
-        $.post('/apps/droppen/droplets', $editor.serialize(), function(droplet) {
-            var previewUrlPath = {
-                'index': '',
-                'collection': 'collection/all/',
-                'product': 'products/' + droplet.product
-            };
+        loadingStarted();
+        $.post('/apps/droppen/droplets', $editor.serialize())
+            .done(function(droplet) {
+                previewDroplet(droplet);
+            })
+            .fail(function() {
+                loadingComplete();
+                alert('Sorry! An error occurred running this DropPen.');
+            });
+    }
 
-            // Update the source of the preview iframe.
-            $preview.attr('src', window.location.href + previewUrlPath[droplet.template] + '?view=' + droplet.code);
-        });
+    /**
+     * Load the droplet preview based on the current editor state.
+     */
+    function previewDroplet(droplet) {
+        var previewUrlPath = {
+            'index': '',
+            'collection': 'collection/all/',
+            'product': 'products/' + droplet.product
+        };
+
+        // Update the source of the preview iframe.
+        $preview.attr('src', window.location.href + previewUrlPath[droplet.template] + '?view=' + droplet.code);
     }
 
     /*****************
@@ -190,17 +211,19 @@ var DropPen = (function($) {
     }
 
     /**
-     * Event handler for when the preview panel begins loading.
+     * Event handler for when loading starts.
      */
-    function previewLoadingStarted() {
+    function loadingStarted() {
         $editor.addClass('loading');
+        $editor.find(':input').prop('disabled', true);
     }
 
     /**
-     * Event handler for when the preview panel completes loading.
+     * Event handler for when loading is complete.
      */
-    function previewLoaded() {
+    function loadingComplete() {
         $editor.removeClass('loading');
+        $editor.find(':input').prop('disabled', false);
     }
 
     /**
