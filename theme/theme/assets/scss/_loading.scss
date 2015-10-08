@@ -12,6 +12,10 @@
   visibility: visible;
 }
 
+.loading #content {
+  opacity: 0.6;
+}
+
 #loader > div {
   background-color: white;
   height: 18px;
