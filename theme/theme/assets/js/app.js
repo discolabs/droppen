@@ -157,8 +157,12 @@ var DropPen = (function($) {
      * Save the current DropPen via an Ajax POST request.
      */
     function saveDropPen() {
+        // Serialize form before loading starts to avoid issues with disabled forms.
+        var data = $editor.serialize();
+
+        // Make the POST request to save and run the DropPen.
         loadingStarted();
-        $.post('/apps/droppen/droppens', $editor.serialize())
+        $.post('/apps/droppen/droppens', data)
             .done(function(droppen) {
                 previewDropPen(droppen);
             })
