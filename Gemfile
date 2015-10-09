@@ -56,6 +56,7 @@ group :development, :test do
   gem 'guard', '~> 2.13.0'
   gem 'guard-minitest', '~> 2.4.4'
   gem 'mocha', '~> 1.1.0'
+  gem 'pry-byebug'
 end
 
 group :production do
