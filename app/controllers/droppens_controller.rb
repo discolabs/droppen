@@ -23,8 +23,8 @@ class DroppensController < ApplicationController
     if @droppen.update(droppen_params)
       begin
         template_service(@droppen).push
-      rescue
-        render :json => @droppen, status: :unprocessable_entity  
+      rescue => ex
+        render :json => @droppen, status: ex.response.code.to_i
       end
 
       render :json => @droppen
