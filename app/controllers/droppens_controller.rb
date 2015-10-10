@@ -7,6 +7,11 @@ class DroppensController < ApplicationController
   # GET /droppens/1
   # GET /droppens/1.json
   def show
+    if @droppen
+      render json: @droppen
+    else
+      render nothing: true, status: :unprocessable_entity
+    end
   end
 
   # POST /droppens
@@ -16,11 +21,15 @@ class DroppensController < ApplicationController
     @droppen = Droppen.find_or_create_by(code: droppen_params[:code])
 
     if @droppen.update(droppen_params)
-      template_service(@droppen).push
+      begin
+        template_service(@droppen).push
+      rescue => ex
+        render :json => @droppen, status: ex.response.code.to_i
+      end
 
       render :json => @droppen
     else
-      render :json => @droppen.errors
+      render nothing: true, status: :unprocessable_entity
     end
   end
 
