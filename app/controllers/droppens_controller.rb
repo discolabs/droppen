@@ -10,7 +10,7 @@ class DroppensController < ApplicationController
     if @droppen
       render json: @droppen
     else
-      render nothing: true, status: 404
+      render nothing: true, status: :unprocessable_entity
     end
   end
 
