@@ -7,6 +7,11 @@ class DroppensController < ApplicationController
   # GET /droppens/1
   # GET /droppens/1.json
   def show
+    if @droppen
+      render json: @droppen
+    else
+      render nothing: true, status: 404
+    end
   end
 
   # POST /droppens
