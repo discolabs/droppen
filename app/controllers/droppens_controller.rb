@@ -21,11 +21,15 @@ class DroppensController < ApplicationController
     @droppen = Droppen.find_or_create_by(code: droppen_params[:code])
 
     if @droppen.update(droppen_params)
-      template_service(@droppen).push
+      begin
+        template_service(@droppen).push
+      rescue
+        render :json => @droppen, status: :unprocessable_entity  
+      end
 
       render :json => @droppen
     else
-      render :json => @droppen.errors
+      render nothing: true, status: :unprocessable_entity
     end
   end
 
