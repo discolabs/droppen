@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 protected
   # based off https://docs.shopify.com/api/uiintegrations/application-proxies#security
   def verified_request?
+    Rails.env.development? || check_signature
+  end
+
+  def check_signature
     query_hash = Rack::Utils.parse_query(request.query_string)
     signature = query_hash.delete("signature")
     sorted_params = query_hash.collect{ |k, v| "#{k}=#{Array(v).join(',')}" }.sort.join
