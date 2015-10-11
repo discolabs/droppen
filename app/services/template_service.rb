@@ -6,10 +6,11 @@ class TemplateService
     @droppen = droppen
   end
 
-  def push
+  def push(domain)
     asset = ShopifyAPI::Asset.new('key': template_name, 'value': template_code)
 
-    Shop.first.temp {
+    shop = Shop.find_by(shopify_domain: domain)
+    shop.temp {
       asset.save
     }
 

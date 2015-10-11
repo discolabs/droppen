@@ -22,9 +22,11 @@ class DroppensController < ApplicationController
 
     if @droppen.update(droppen_params)
       begin
-        template_service(@droppen).push
+        template_service(@droppen).push(params[:shop])
       rescue => ex
+
         render :json => @droppen, status: ex.response.code.to_i
+        return
       end
 
       render :json => @droppen
