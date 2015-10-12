@@ -17,9 +17,15 @@ class DroppensController < ApplicationController
   # POST /droppens
   # POST /droppens.json
   def create
-
     @droppen = Droppen.find_or_create_by(code: droppen_params[:code])
 
+    # If the DropPen is locked, silently discard any changes and return original.
+    if @droppen.locked?
+      render json: @droppen
+      return
+    end
+
+    # Otherwise, continue to update the DropPen.
     if @droppen.update(droppen_params)
       begin
         template_service(@droppen).push(params[:shop])

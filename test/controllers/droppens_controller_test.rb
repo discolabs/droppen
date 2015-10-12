@@ -38,29 +38,31 @@ class DroppensControllerTest < ActionController::TestCase
     end
 
     it "updates the current droppen information" do
+      old_liquid = @the_drop.liquid
       new_liquid = "HOLA"
-      post 'create', format: :json, id: @the_drop.code, liquid: @the_drop.liquid
+
+      post 'create', format: :json, code: @the_drop.code, liquid: new_liquid
       body = JSON.parse(response.body)
 
-      assert_equal @the_drop.liquid, body["liquid"]
-
-      post 'create', format: :json, id: @the_drop.code, liquid: new_liquid
-      body = JSON.parse(response.body)
-
+      @the_drop.reload
       assert_equal new_liquid, body["liquid"]
+      assert_equal new_liquid, @the_drop.liquid
     end
 
-    it "does not updates the current droppen information when locked" do
+    it "does not update the current droppen information when locked" do
+      old_liquid = @the_drop.liquid
       new_liquid = "HOLA"
+
       @the_drop.locked!
 
-      post 'create', format: :json, id: @the_drop.code, liquid: new_liquid
+      post 'create', format: :json, code: @the_drop.code, liquid: new_liquid
       body = JSON.parse(response.body)
 
-      assert_equal @the_drop.liquid, body["liquid"]
+      @the_drop.reload
+      assert_equal old_liquid, body["liquid"]
+      assert_equal old_liquid, @the_drop.liquid
     end
 
   end
-
 
 end
