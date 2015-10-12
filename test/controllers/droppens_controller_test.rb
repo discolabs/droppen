@@ -29,12 +29,12 @@ class DroppensControllerTest < ActionController::TestCase
 
 
   describe "POST 'create'" do
+
     before(:each) do
       template_service_mock = mock() 
       template_service_mock.stubs(:push)
       @controller.stubs(:template_service).returns(template_service_mock)
       @the_drop = droppens(:one)
-
     end
 
     it "updates the current droppen information" do
@@ -48,6 +48,16 @@ class DroppensControllerTest < ActionController::TestCase
       body = JSON.parse(response.body)
 
       assert_equal new_liquid, body["liquid"]
+    end
+
+    it "does not updates the current droppen information when locked" do
+      new_liquid = "HOLA"
+      @the_drop.locked!
+
+      post 'create', format: :json, id: @the_drop.code, liquid: new_liquid
+      body = JSON.parse(response.body)
+
+      assert_equal @the_drop.liquid, body["liquid"]
     end
 
   end
