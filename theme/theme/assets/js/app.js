@@ -10,6 +10,12 @@ var DropPen = (function($) {
         jsCodeMirror, cssCodeMirror, liquidCodeMirror,
         dropPenCode, queryParameters, liquidKeywords;
 
+    // Constants
+    var DROPPEN_STATUSES = {
+        'unlocked': 0,
+        'locked': 1
+    };
+
     /***************************
      * Initialisation and setup.
      ***************************/
@@ -61,11 +67,18 @@ var DropPen = (function($) {
 
         // If we still don't have a valid DropPen code, generate a random one.
         if(!dropPenCode) {
-            dropPenCode = Math.random().toString(36).substring(6);
+            dropPenCode = getRandomDropPenCode();
         }
 
         // Store the DropPen code in the form element.
         $code.val(dropPenCode);
+    }
+
+    /**
+     * Generate a random DropPen code.
+     */
+    function getRandomDropPenCode() {
+        return Math.random().toString(36).substring(6);
     }
 
     /**
@@ -147,6 +160,12 @@ var DropPen = (function($) {
                 $template.val(droppen.template);
                 $product.val(droppen.product);
                 previewDropPen(droppen);
+
+                // If the DropPen was locked, re-generate a random code so that
+                // changes are saved to a new DropPen.
+                if(droppen.status == DROPPEN_STATUSES.locked) {
+                    $code.val(getRandomDropPenCode());
+                }
             })
             .fail(function() {
                 loadingComplete();
