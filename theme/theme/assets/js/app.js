@@ -165,6 +165,10 @@ var DropPen = (function($) {
         $.post('/apps/droppen/droppens', data)
             .done(function(droppen) {
                 previewDropPen(droppen);
+                queryParameters = $.getQueryParameters();
+                if(!('droppen' in queryParameters)) {
+                    window.history.pushState(null, null, "?droppen=" + droppen.code);
+                }
             })
             .fail(function() {
                 loadingComplete();
