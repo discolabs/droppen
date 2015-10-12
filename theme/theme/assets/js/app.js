@@ -21,7 +21,7 @@ var DropPen = (function($) {
         liquidKeywords = initialLiquidKeywords;
         setupElementReferences();
         setupDropPenCode();
-        setupCodeMirrors();
+        setupCodeMirrors('', '', '');
         setupEventHandlers();
         setupKeymaster();
         setupList();
@@ -71,7 +71,7 @@ var DropPen = (function($) {
     /**
      * Initialise CodeMirror on <textarea> elements.
      */
-    function setupCodeMirrors() {
+    function setupCodeMirrors(jsCode, cssCode, liquidCode) {
         var extraKeys = {
           'Ctrl-/': toggleLiquidHelp,
           'Cmd-/': toggleLiquidHelp
@@ -81,16 +81,19 @@ var DropPen = (function($) {
             lineNumbers: true,
             extraKeys: extraKeys
         });
+        jsCodeMirror.getDoc().setValue(jsCode);
         cssCodeMirror = CodeMirror.fromTextArea($css.get(0), {
             mode: 'css',
             lineNumbers: true,
             extraKeys: extraKeys
         });
+        cssCodeMirror.getDoc().setValue(cssCode);
         liquidCodeMirror = CodeMirror.fromTextArea($liquid.get(0), {
             mode: 'htmlmixed',
             lineNumbers: true,
             extraKeys: extraKeys
         });
+        liquidCodeMirror.getDoc().setValue(liquidCode);
     }
 
     /**
@@ -140,9 +143,7 @@ var DropPen = (function($) {
         loadingStarted();
         $.getJSON('/apps/droppen/droppens/' + dropPenCode)
             .done(function(droppen) {
-                $liquid.val(droppen.liquid);
-                $css.val(droppen.css);
-                $js.val(droppen.js);
+                setupCodeMirrors(droppen.js, droppen.css, droppen.liquid);
                 $template.val(droppen.template);
                 $product.val(droppen.product);
                 previewDropPen(droppen);
