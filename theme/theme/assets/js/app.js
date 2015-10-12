@@ -187,7 +187,7 @@ var DropPen = (function($) {
         };
 
         // Update the source of the preview iframe.
-        $preview.attr('src', window.location.href + previewUrlPath[droppen.template] + '?view=' + droppen.code);
+        $preview.attr('src', "//" + window.location.hostname + previewUrlPath[droppen.template] + '?view=' + droppen.code);
     }
 
     /*****************
