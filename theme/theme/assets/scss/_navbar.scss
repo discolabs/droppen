@@ -19,6 +19,18 @@
     padding: 10px 0;
   }
 
+  #promo {
+    padding: 10px;
+    text-align: right;
+    color: white;
+    font-size: 12px;
+    line-height: 32px;
+
+    a, &:visited {
+      color: white;
+    }
+  }
+
   button {
     display: inline-block;
     background: transparent;
