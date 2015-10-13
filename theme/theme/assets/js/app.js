@@ -10,12 +10,6 @@ var DropPen = (function($) {
         jsCodeMirror, cssCodeMirror, liquidCodeMirror,
         dropPenCode, queryParameters, liquidKeywords;
 
-    // Constants
-    var DROPPEN_STATUSES = {
-        'unlocked': 0,
-        'locked': 1
-    };
-
     /***************************
      * Initialisation and setup.
      ***************************/
@@ -162,7 +156,7 @@ var DropPen = (function($) {
 
                 // If the DropPen was locked, re-generate a random code so that
                 // changes are saved to a new DropPen.
-                if(droppen.status == DROPPEN_STATUSES.locked) {
+                if(droppen.status == 'locked') {
                     $code.val(getRandomDropPenCode());
                 }
             })
@@ -183,9 +177,12 @@ var DropPen = (function($) {
         loadingStarted();
         $.post('/apps/droppen/droppens', data)
             .done(function(droppen) {
+                // Trigger the previewing of the DropPen.
                 previewDropPen(droppen);
+
+                // Check to see if we need to update the page's URL.
                 queryParameters = $.getQueryParameters();
-                if(!('droppen' in queryParameters)) {
+                if(queryParameters['droppen'] != droppen.code) {
                     window.history.pushState(null, null, "?droppen=" + droppen.code);
                 }
             })
