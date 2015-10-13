@@ -198,8 +198,8 @@ var DropPen = (function($) {
     function previewDropPen(droppen) {
         var previewUrlPath = {
             'index': '',
-            'collection': 'collection/all/',
-            'product': 'products/' + droppen.product
+            'collection': '/collection/all/',
+            'product': '/products/' + droppen.product
         };
 
         // Update the source of the preview iframe.
