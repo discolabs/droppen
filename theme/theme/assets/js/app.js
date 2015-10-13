@@ -198,7 +198,7 @@ var DropPen = (function($) {
     function previewDropPen(droppen) {
         var previewUrlPath = {
             'index': '',
-            'collection': '/collection/all/',
+            'collection': '/collections/all',
             'product': '/products/' + droppen.product
         };
 
