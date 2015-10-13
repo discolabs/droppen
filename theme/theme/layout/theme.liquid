@@ -4,6 +4,17 @@
     <title>{{ shop.name | escape }}</title>
     <meta name="description" content="{{ shop.description }}" />
     {{ content_for_header }}
+
+    <!-- Open Graph tags. -->
+    <meta property="og:title" content="{{ shop.name | escape }}" />
+    <meta property="og:site_name" content="{{ shop.name | escape }}" />
+    <meta property="og:description" content="{{ shop.description }}" />
+    <meta property="og:url" content="{{ canonical_url }}" />
+    <meta property="og:image:url" content="http:{{ 'droppen.jpg' | asset_url }}" />
+    <meta property="og:image:secure_url" content="https:{{ 'droppen.jpg' | asset_url }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+
     {{ 'normalize.css' | asset_url | stylesheet_tag }}
     {{ 'codemirror.css' | asset_url | stylesheet_tag }}
     {{ 'styles.css' | asset_url | stylesheet_tag }}
