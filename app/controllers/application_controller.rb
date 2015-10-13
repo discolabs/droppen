@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 protected
   # based off https://docs.shopify.com/api/uiintegrations/application-proxies#security
   def verified_request?
-    check_signature
+    check_signature || super
   end
 
   def check_signature
