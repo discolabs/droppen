@@ -1,5 +1,5 @@
 GIT
-  remote: https://disco-gems:f361b0fef05c465c85a3d2d297930719617cb583@github.com/discolabs/disco_app.git
+  remote: https://disco-gems:0dfbd458c126baa2744cef477b24c7cf7227fae5@github.com/discolabs/disco_app.git
   revision: b577fe988bef999b250559ddf882e82e29db8bf9
   tag: 0.5.5
   specs:
